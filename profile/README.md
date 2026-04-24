@@ -37,12 +37,6 @@ Focused command-line tools for specific formats and workflows.
 | [**ltk-tex-utils**](https://github.com/LeagueToolkit/ltk-tex-utils) | CLI utilities for working with `.tex` textures.        |
 | [**ritobin-tools**](https://github.com/LeagueToolkit/ritobin-tools) | Tooling for Ritobin (`.py`) files.                     |
 
-## Integrations & plugins
-
-| Project                                                                           | Description                                                |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [**LeagueFileTranslator**](https://github.com/LeagueToolkit/LeagueFileTranslator) | Maya 2019 plugin for editing League models and animations. |
-
 ## Reference data
 
 | Project                                                                   | Description                                           |
