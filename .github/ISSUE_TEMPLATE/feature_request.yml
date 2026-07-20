@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a new capability or a change to an existing one.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: >
+        Describe the actual task, not the solution you have in mind. "I need to pull every
+        skin texture out of 200 WADs and can only do them one at a time" tells us more than
+        "add a --batch flag".
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you'd like to see
+      description: If you have a concrete design in mind, sketch it - flags, output, behavior.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you're doing instead today
+      description: Workarounds, other tools, manual steps.
+    validations:
+      required: false

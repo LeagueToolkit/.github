@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://github.com/LeagueToolkit/wiki
+    about: The LeagueToolkit wiki - formats, tooling, and guides.
+  - name: Awesome League
+    url: https://github.com/LeagueToolkit/awesome-league
+    about: Looking for a tool that already does this? Check the list first.
+  - name: Security vulnerability
+    url: https://github.com/LeagueToolkit/.github/blob/main/SECURITY.md
+    about: Don't file a public issue - report it privately.
