@@ -1,0 +1,54 @@
+name: Format finding
+description: Share reverse-engineering knowledge - a new field, a version bump, a corrected struct.
+labels: ["format", "research"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For documenting how a League file format actually works. Partial findings are welcome -
+        "this u32 is always 0 except in `UI.wad`" is useful.
+
+  - type: input
+    id: format
+    attributes:
+      label: Format
+      placeholder: "WAD v3.4 / .skn / meta .bin / RMAN"
+    validations:
+      required: true
+
+  - type: input
+    id: game-version
+    attributes:
+      label: Game version
+      description: The patch the finding is based on. Formats drift; this matters.
+      placeholder: "15.19"
+    validations:
+      required: true
+
+  - type: textarea
+    id: finding
+    attributes:
+      label: The finding
+      description: >
+        What you worked out. Offsets, field types, value ranges, a struct definition. Mark
+        anything you're guessing at as a guess.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How you know
+      description: >
+        Binary offsets, a decompiled function, files where the value varies, a related project.
+        Enough that the next person can re-derive it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: unknowns
+    attributes:
+      label: Still unknown
+      description: Fields you couldn't identify, cases that don't fit.
+    validations:
+      required: false
