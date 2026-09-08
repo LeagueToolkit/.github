@@ -1,52 +1,93 @@
-# League Toolkit
+<div align="center">
+  <a href="https://github.com/LeagueToolkit">
+    <img src="https://avatars.githubusercontent.com/u/28510182?s=200&v=4" alt="LeagueToolkit logo" width="96" height="96">
+  </a>
+  <h1>League Toolkit</h1>
+</div>
 
-> The modding toolkit for League of Legends.
+League of Legends keeps its art and data in formats Riot does not document: `.wad` archives
+holding `.bin` data, `.tex` textures, `.skn` models, `.anm` animations. League Toolkit documents
+those formats and builds the software that reads and writes them. The libraries under other
+people's tools, the tools that turn a folder of files into a mod, and the managers that install
+one are all here.
 
-League Toolkit is a community-driven ecosystem of libraries, tools, and applications for creating, editing, and distributing League of Legends mods. We maintain the parsers for Riot's file formats, the CLIs that build mods, and the managers that ship them to players.
+<div align="center">
 
-- **Wiki & docs:** [wiki.leaguetoolkit.dev](https://wiki.leaguetoolkit.dev/)
-- **.bin class reference:** [lol-meta-wiki](https://github.com/LeagueToolkit/lol-meta-wiki)
-- **Curated list of League tooling:** [awesome-league](https://github.com/LeagueToolkit/awesome-league)
+**[Play mods](#play-mods)** · **[Make mods](#make-mods)** · **[Build tools](#build-tools)** · **[Reference data](#reference-data)**
 
-## Mod managers
+</div>
 
-End-user applications for installing and running custom skins.
+## Play mods
 
-| Project                                                             | Description                                       |
-| ------------------------------------------------------------------- | ------------------------------------------------- |
-| [**ltk-manager**](https://github.com/LeagueToolkit/ltk-manager)     | Next-generation mod manager (Tauri, React, Rust). |
-| [**cslol-manager**](https://github.com/LeagueToolkit/cslol-manager) | The original custom-skin mod manager (C++, Qt).   |
+[**ltk-manager**](https://github.com/LeagueToolkit/ltk-manager) is the current mod manager. It
+holds a library of mods, enables and disables them, and patches the game.
 
-## Core libraries
+[**cslol-manager**](https://github.com/LeagueToolkit/cslol-manager) is the long-standing one. Old
+guides and skin downloads assume it.
 
-Reusable libraries for parsing and editing League of Legends asset formats.
+## Make mods
 
-| Project                                                               | Language | Description                                                       |
-| --------------------------------------------------------------------- | -------- | ----------------------------------------------------------------- |
-| [**league-toolkit**](https://github.com/LeagueToolkit/league-toolkit) | Rust     | Modern Rust workspace for League asset formats.                   |
-| [**LeagueToolkit**](https://github.com/LeagueToolkit/LeagueToolkit)   | C#       | Long-standing .NET library for parsing and editing League assets. |
+A mod puts your own files where the game expects Riot's. The
+[**wiki**](https://wiki.leaguetoolkit.dev/) covers the project layout and the path a mod takes
+into the game.
 
-## CLIs & utilities
+[**league-mod**](https://github.com/LeagueToolkit/league-mod) defines `.modpkg`, the format a
+finished mod ships in. It packs a project directory into one and builds the WAD overlay the game
+loads. ltk-manager runs on it.
 
-Focused command-line tools for specific formats and workflows.
+[**wadtools**](https://github.com/LeagueToolkit/wadtools) extracts, lists and compares `.wad`
+archives, and adds itself to the Windows right-click menu.
+[**ltk-tex-utils**](https://github.com/LeagueToolkit/ltk-tex-utils) converts and inspects `.tex`
+textures. [**ritobin-tools**](https://github.com/LeagueToolkit/ritobin-tools) works on Ritobin
+files, the readable text form of `.bin` data.
 
-| Project                                                             | Description                                            |
-| ------------------------------------------------------------------- | ------------------------------------------------------ |
-| [**league-mod**](https://github.com/LeagueToolkit/league-mod)       | Create, manage, and distribute League of Legends mods. |
-| [**wadtools**](https://github.com/LeagueToolkit/wadtools)           | High-performance tooling for `.wad` files.             |
-| [**ltk-tex-utils**](https://github.com/LeagueToolkit/ltk-tex-utils) | CLI utilities for working with `.tex` textures.        |
-| [**ritobin-tools**](https://github.com/LeagueToolkit/ritobin-tools) | Tooling for Ritobin (`.py`) files.                     |
+## Build tools
+
+[**league-toolkit**](https://github.com/LeagueToolkit/league-toolkit) is a set of Rust crates, one
+per format family: WAD archives, property bins, textures, meshes, animations, map geometry, string
+tables. Depend on the umbrella crate, or on a single crate.
+
+[**LeagueToolkit**](https://github.com/LeagueToolkit/LeagueToolkit) is the C# library for the same
+formats.
+
+A WAD stores paths as hashes. A name comes back through a hash table.
+[**Mimir**](https://github.com/LeagueToolkit/Mimir) delivers those tables as compact
+memory-mapped files, shared between tools through one cache.
 
 ## Reference data
 
-| Project                                                                   | Description                                           |
-| ------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [**lol-meta-wiki**](https://github.com/LeagueToolkit/lol-meta-wiki)       | Documentation for `.bin` meta classes and properties. |
-| [**lol-meta-classes**](https://github.com/LeagueToolkit/lol-meta-classes) | Per-patch meta class dumps.                           |
-| [**LeagueHashes**](https://github.com/LeagueToolkit/LeagueHashes)         | Community-maintained hash lists.                      |
+The [**wiki**](https://github.com/LeagueToolkit/wiki) holds our guides and format documentation,
+published at [wiki.leaguetoolkit.dev](https://wiki.leaguetoolkit.dev/).
+
+[**lol-meta-wiki**](https://github.com/LeagueToolkit/lol-meta-wiki) documents every `.bin` meta
+class and property, with a JSON API and per-patch changelogs. It renders
+[**lol-meta-classes**](https://github.com/LeagueToolkit/lol-meta-classes), a dump of those classes
+taken every patch.
+
+[**ritobin-lang**](https://github.com/LeagueToolkit/ritobin-lang) specifies the Ritobin language.
+[**LeagueHashes**](https://github.com/LeagueToolkit/LeagueHashes) collects the community's hash
+lists. [**awesome-league**](https://github.com/LeagueToolkit/awesome-league) is a curated list of
+League tooling, ours and everyone else's.
+
+## Older projects
+
+[**Fantome**](https://github.com/LeagueToolkit/Fantome) is archived. league-mod reads and writes
+the `.fantome` format it introduced, and old mods keep working.
+[**LeagueFileTranslator**](https://github.com/LeagueToolkit/LeagueFileTranslator) is a Maya 2019
+plugin for League models and animations.
+[**LeagueDownloader**](https://github.com/LeagueToolkit/LeagueDownloader) downloads any released
+version of the game.
 
 ## Contributing
 
-Most of our projects welcome contributions — issues, PRs, and discussion are all fair game. Start with the repo's `README` and open issues. For broader questions about asset formats or modding workflows, the [wiki](https://wiki.leaguetoolkit.dev/) is the best first stop.
+Issues, pull requests and questions are welcome on every repository here. Anything beyond a small
+fix starts as an issue. The
+[contributing guide](https://github.com/LeagueToolkit/.github/blob/main/CONTRIBUTING.md) covers
+setup, style and review across the org.
+[repo-template](https://github.com/LeagueToolkit/repo-template) is the starting point for a new
+repository.
 
-League Toolkit is an independent community project. It is not affiliated with or endorsed by Riot Games.
+Documenting a format nobody has written up yet counts as much as code. The wiki is where it goes.
+
+League Toolkit is an independent community project. It is not affiliated with or endorsed by Riot
+Games.
